@@ -1,0 +1,25 @@
+#N canvas 379 413 484 325 12;
+#X obj 54 115 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 274 115 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X msg 271 132 set myfunction2 \, \$1 2 3;
+#X obj 196 227 python_comm;
+#X obj 196 248 oscparse;
+#X obj 196 270 print;
+#X obj 270 210 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X text 49 98 send float to myfunction1();
+#X text 268 96 send list to myfunction2();
+#X text 29 9 python_comm help;
+#X text 30 28 This abstraction sends and receives osc messages to and
+from python. It is useful to take advantage of python's robust infrastructure
+(i.e. running ML/generative processes).;
+#X msg 51 132 set myfunction1 \, \$1;
+#X connect 0 0 11 0;
+#X connect 1 0 2 0;
+#X connect 2 0 3 0;
+#X connect 3 0 4 0;
+#X connect 4 0 5 0;
+#X connect 6 0 3 1;
+#X connect 11 0 3 0;

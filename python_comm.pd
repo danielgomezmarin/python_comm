@@ -1,0 +1,48 @@
+#N canvas 764 23 516 368 12;
+#X msg 62 216 disconnect;
+#X obj 30 308 netsend -u -b;
+#X msg 39 287 connect 127.0.0.1 5005;
+#X obj 74 75 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 10400 1;
+#X obj 239 228 netreceive -u -b;
+#X msg 239 165 listen 0;
+#X msg 239 207 listen 5006;
+#X text 300 165 (listen 0 to close);
+#X obj 259 260 oscparse;
+#X obj 254 75 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 8300 1;
+#X obj 30 153 oscformat;
+#X obj 62 245 loadbang;
+#X obj 30 75 inlet;
+#X obj 39 195 sel 1 0;
+#X obj 39 174 inlet connect-disconnect;
+#X text 63 267 localhost \, port 5005;
+#X obj 239 186 loadbang;
+#X text 321 206 <- bang to start listening;
+#X msg 71 92 set myfunction1 \, \$1;
+#X text 69 58 float to myfunction1();
+#X text 248 56 list to myfunction2();
+#X msg 251 92 set myfunction2 \, \$1 2 3;
+#X text 27 19 Abstraction to send and receive OSC messages to and from
+python. Useful for making algoritmic outsourcing.;
+#X obj 30 329 print listening;
+#X obj 239 309 outlet connect-to-oscparse;
+#X obj 259 281 print incomming;
+#X connect 0 0 1 0;
+#X connect 1 0 23 0;
+#X connect 2 0 1 0;
+#X connect 3 0 18 0;
+#X connect 4 0 24 0;
+#X connect 5 0 4 0;
+#X connect 6 0 4 0;
+#X connect 8 0 25 0;
+#X connect 9 0 21 0;
+#X connect 10 0 1 0;
+#X connect 11 0 2 0;
+#X connect 12 0 10 0;
+#X connect 13 0 2 0;
+#X connect 13 1 0 0;
+#X connect 14 0 13 0;
+#X connect 16 0 6 0;
+#X connect 18 0 10 0;
+#X connect 21 0 10 0;
